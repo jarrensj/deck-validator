@@ -28,25 +28,36 @@ if rarity_points <= 15:
 else:
     print(f"❌ Deck is invalid. It has {rarity_points} rarity points, but should have 15 or less")
 
-# count how many cards of 25 aura points, how many of 25 skill points, and how many of 25 stamina points are in the deck
-aura_points_25 = sum(card["aura"] == 25 for card in deck)
-skill_points_25 = sum(card["skill"] == 25 for card in deck)
-stamina_points_25 = sum(card["stamina"] == 25 for card in deck)
+# count and store card names for 25 points and 24 points cards
+aura_25_cards = [card["name"] for card in deck if card["aura"] == 25]
+skill_25_cards = [card["name"] for card in deck if card["skill"] == 25]
+stamina_25_cards = [card["name"] for card in deck if card["stamina"] == 25]
+
+aura_24_cards = [card["name"] for card in deck if card["aura"] == 24]
+skill_24_cards = [card["name"] for card in deck if card["skill"] == 24]
+stamina_24_cards = [card["name"] for card in deck if card["stamina"] == 24]
 
 print("\n -- 25 points cards --")
-print(f"🧠 Deck has {aura_points_25} cards with 25 aura points")
-print(f"🧠 Deck has {skill_points_25} cards with 25 skill points")
-print(f"🧠 Deck has {stamina_points_25} cards with 25 stamina points") 
-
-# 24 aura points, 24 skill points, 24 stamina points
-aura_points_24 = sum(card["aura"] == 24 for card in deck)
-skill_points_24 = sum(card["skill"] == 24 for card in deck)
-stamina_points_24 = sum(card["stamina"] == 24 for card in deck)
+print(f"\n🧠 Deck has {len(aura_25_cards)} cards with 25 aura points:")
+for name in aura_25_cards:
+    print(f"  - {name}")
+print(f"\n🧠 Deck has {len(skill_25_cards)} cards with 25 skill points:")
+for name in skill_25_cards:
+    print(f"  - {name}")
+print(f"\n🧠 Deck has {len(stamina_25_cards)} cards with 25 stamina points:")
+for name in stamina_25_cards:
+    print(f"  - {name}")
 
 print("\n -- 24 points cards --")
-print(f"🧠 Deck has {aura_points_24} cards with 24 aura points")
-print(f"🧠 Deck has {skill_points_24} cards with 24 skill points")
-print(f"🧠 Deck has {stamina_points_24} cards with 24 stamina points")
+print(f"\n🧠 Deck has {len(aura_24_cards)} cards with 24 aura points:")
+for name in aura_24_cards:
+    print(f"  - {name}")
+print(f"\n🧠 Deck has {len(skill_24_cards)} cards with 24 skill points:")
+for name in skill_24_cards:
+    print(f"  - {name}")
+print(f"\n🧠 Deck has {len(stamina_24_cards)} cards with 24 stamina points:")
+for name in stamina_24_cards:
+    print(f"  - {name}")
 
 # count occurrences of each score and store card names
 score_counts = Counter()
