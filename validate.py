@@ -1,5 +1,5 @@
 import json
-from collections import Counter
+from collections import Counter, defaultdict
 
 # deck file path
 deck_file_path = "deck.json"
@@ -48,15 +48,20 @@ print(f"🧠 Deck has {aura_points_24} cards with 24 aura points")
 print(f"🧠 Deck has {skill_points_24} cards with 24 skill points")
 print(f"🧠 Deck has {stamina_points_24} cards with 24 stamina points")
 
-# count occurrences of each score
+# count occurrences of each score and store card names
 score_counts = Counter()
+score_card_names = defaultdict(list)
 
 for card in deck:
     if "total" in card:
-        score_counts[card["total"]] += 1
+        score = card["total"]
     else:
-        score_counts[card["score"]] += 1
+        score = card["score"]
+    score_counts[score] += 1
+    score_card_names[score].append(card["name"])
 
 print("\n -- Score counts --")
 for score, count in sorted(score_counts.items(), reverse=True):
-    print(f"🏆 Score {score}: {count} cards")
+    print(f"\n🏆 Score {score}: {count} cards")
+    for name in score_card_names[score]:
+        print(f"  - {name}")
