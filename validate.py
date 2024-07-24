@@ -19,3 +19,10 @@ if len(deck) == len(deck_as_frozensets):
     print("✅ All cards are unique")
 else:
     print("❌ Deck is invalid. All cards should be unique")
+
+# count how many rarity points are in the deck and validate that the total rarity points are 15 or less
+rarity_points = sum(card["rarity"] for card in deck)
+if rarity_points <= 15:
+    print(f"✅ Deck has {rarity_points} rarity points")
+else:
+    print(f"❌ Deck is invalid. It has {rarity_points} rarity points, but should have 15 or less")
