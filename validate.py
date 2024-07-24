@@ -12,3 +12,10 @@ if len(deck) == 20:
     print("Deck contains 20 cards")
 else:
     print("Deck is invalid. It should contain 20 cards")
+
+# validate the deck by checking that each card is unique
+deck_as_frozensets = {frozenset(card.items()) for card in deck}
+if len(deck) == len(deck_as_frozensets):
+    print("All cards are unique")
+else:
+    print("Deck is invalid. All cards should be unique")
